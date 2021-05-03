@@ -6,3 +6,11 @@ C:\Projects\Misc\NppPlugins\ZipFileList\ZipFileList\obj\x64\Debug\ZipFileList.cs
 C:\Projects\Misc\NppPlugins\ZipFileList\ZipFileList\obj\x64\Debug\ZipFileList.csproj.CoreCompileInputs.cache
 C:\Projects\Misc\NppPlugins\ZipFileList\ZipFileList\obj\x64\Debug\ZipFileList.dll
 C:\Projects\Misc\NppPlugins\ZipFileList\ZipFileList\obj\x64\Debug\ZipFileList.pdb
+E:\Projects\NppPlugins\ZipFileList\ZipFileList\bin\Debug-x64\ZipFileList.dll
+E:\Projects\NppPlugins\ZipFileList\ZipFileList\bin\Debug-x64\ZipFileList.pdb
+E:\Projects\NppPlugins\ZipFileList\ZipFileList\obj\x64\Debug\Kbg.NppPluginNET.frmMyDlg.resources
+E:\Projects\NppPlugins\ZipFileList\ZipFileList\obj\x64\Debug\ZipFileList.Properties.Resources.resources
+E:\Projects\NppPlugins\ZipFileList\ZipFileList\obj\x64\Debug\ZipFileList.csproj.GenerateResource.cache
+E:\Projects\NppPlugins\ZipFileList\ZipFileList\obj\x64\Debug\ZipFileList.csproj.CoreCompileInputs.cache
+E:\Projects\NppPlugins\ZipFileList\ZipFileList\obj\x64\Debug\ZipFileList.dll
+E:\Projects\NppPlugins\ZipFileList\ZipFileList\obj\x64\Debug\ZipFileList.pdb

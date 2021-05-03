@@ -38,16 +38,11 @@ namespace Kbg.NppPluginNET
 
 		internal static void CommandMenuInit()
 		{
-			StringBuilder sbIniFilePath = new StringBuilder(Win32.MAX_PATH);
-			Win32.SendMessage(PluginBase.nppData._nppHandle, (uint) NppMsg.NPPM_GETPLUGINSCONFIGDIR, Win32.MAX_PATH, sbIniFilePath);
-			iniFilePath = sbIniFilePath.ToString();
-			if (!Directory.Exists(iniFilePath)) Directory.CreateDirectory(iniFilePath);
-			iniFilePath = Path.Combine(iniFilePath, PluginName + ".ini");
-
-			StringBuilder savedPathname = new StringBuilder("", 255);
-			int i = Win32.GetPrivateProfileString("Dependencies", "7ZipExeDirectory", "", savedPathname, 255, iniFilePath);
-			config7ZipPath = savedPathname.ToString();
-
+			/* Removed ini file retrieval from here, it was crashing NPP at startup when
+			 * not running as local admin.  Have not investigated reason for this, but
+			 * ini retrieval needs to have exception handling, and also does not need to
+			 * happen unless/until this plugin gets activated.
+			 */
 			PluginBase.SetCommand(0, "Create archive", myMenuFunction, new ShortcutKey(false, false, false, Keys.None));
 		}
 
@@ -71,6 +66,23 @@ namespace Kbg.NppPluginNET
 
 		internal static void myMenuFunction()
 		{
+			try
+			{
+				/* Not sure why this works when running as a local admin user but something
+				 * fails when running as a user without local admin.  Will investigate later,
+				 * for now just accept that previous values may not be retrieved.
+				 */
+				StringBuilder sbIniFilePath = new StringBuilder(Win32.MAX_PATH);
+				Win32.SendMessage(PluginBase.nppData._nppHandle, (uint)NppMsg.NPPM_GETPLUGINSCONFIGDIR, Win32.MAX_PATH, sbIniFilePath);
+				iniFilePath = sbIniFilePath.ToString();
+				if (!Directory.Exists(iniFilePath)) Directory.CreateDirectory(iniFilePath);
+				iniFilePath = Path.Combine(iniFilePath, PluginName + ".ini");
+				StringBuilder savedPathname = new StringBuilder("", 255);
+				int i = Win32.GetPrivateProfileString("Dependencies", "7ZipExeDirectory", "", savedPathname, 255, iniFilePath);
+				config7ZipPath = savedPathname.ToString();
+			}
+			catch (Exception) { }
+
 			PathTo7Zip = Find7zPath();
 			INotepadPPGateway notepad = new NotepadPPGateway();
 			string currentFile = notepad.GetCurrentFilePath();
